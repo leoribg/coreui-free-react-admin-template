@@ -51,6 +51,7 @@ router.post('/', function (req, res, next) {
         err.status = 401;
         return next(err);
       } else {
+        console.log('Authenticated');
         req.session.userId = user._id;
         return res.redirect('/profile');
       }

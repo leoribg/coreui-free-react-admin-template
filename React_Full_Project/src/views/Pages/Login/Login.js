@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
+import axios from 'axios';
 
 
 class Login extends Component {
@@ -22,6 +23,10 @@ class Login extends Component {
     console.log(usernameVar);
     console.log(passwordVar);
 
+    axios.post('/', {
+      logemail: usernameVar,
+      logpassword: passwordVar
+    })
   }
   render() {
     return (
