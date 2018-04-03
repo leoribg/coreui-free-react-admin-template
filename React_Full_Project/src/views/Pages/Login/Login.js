@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
 import axios from 'axios';
+import {withRouter} from "react-router-dom";
 
 
 class Login extends Component {
@@ -27,6 +28,14 @@ class Login extends Component {
       logemail: usernameVar,
       logpassword: passwordVar
     })
+    .then(function (response) {
+      console.log(response);
+      //this.props.history.push("/dashboard");
+      history.push("/dashboard");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   render() {
     return (
@@ -83,5 +92,4 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;
+export default withRouter(Login);
