@@ -3,6 +3,26 @@ import {Container, Row, Col, CardGroup, Card, CardBody, Button, Input, InputGrou
 
 
 class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('Click happened');
+
+    this.setState({
+      isFetching: true,
+      errormsg: null,
+      showSpan: null
+    })
+
+    var usernameVar = document.getElementById("inputUser").value
+    var passwordVar = document.getElementById("inputPass").value
+
+    console.log(usernameVar);
+    console.log(passwordVar);
+
+  }
   render() {
     return (
       <div className="app flex-row align-items-center">
@@ -20,7 +40,7 @@ class Login extends Component {
                           <i className="icon-user"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Username"/>
+                      <Input type="text" id="inputUser" placeholder="Username"/>
                     </InputGroup>
                     <InputGroup className="mb-4">
                       <InputGroupAddon addonType="prepend">
@@ -28,11 +48,11 @@ class Login extends Component {
                           <i className="icon-lock"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="password" placeholder="Password"/>
+                      <Input type="password" id="inputPass" placeholder="Password"/>
                     </InputGroup>
                     <Row>
                       <Col xs="6">
-                        <Button color="primary" className="px-4">Login</Button>
+                        <Button onClick={this.handleClick} type="button" color="primary" className="px-4">Login</Button>
                       </Col>
                       <Col xs="6" className="text-right">
                         <Button color="link" className="px-0">Forgot password?</Button>
